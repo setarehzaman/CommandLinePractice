@@ -8,7 +8,7 @@ public class UserService
 
     public UserService()
     {
-        _userRepository = new UserDapperRepository();
+        _userRepository = new UserADORepository();
     }
 
     public string Register(string username, string password)
