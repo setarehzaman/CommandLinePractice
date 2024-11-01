@@ -1,5 +1,6 @@
 ﻿
 using Colors.Net.StringColorExtensions;
+using CommandLinePractice;
 
 public class UserService
 {
@@ -7,7 +8,7 @@ public class UserService
 
     public UserService()
     {
-        _userRepository = new UserRepository();
+        _userRepository = new UserDapperRepository();
     }
 
     public string Register(string username, string password)
@@ -15,7 +16,7 @@ public class UserService
         if (_userRepository.GetUserByUsername(username) != null)
             return $"{"register failed! username already exists.".Red()}";
 
-        var user = new User(username,password);
+        var user = new User() { UserName = username, Password = password};
 
         _userRepository.AddUser(user);
         return $"{"Registration successful!".Green()}";
@@ -28,7 +29,9 @@ public class UserService
         if (user != null)
         {
             if (user.Password == password)
+            {
                 return true;
+            }
         }
         return false;
     }

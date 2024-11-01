@@ -39,25 +39,25 @@ public class UserRepository : IUserRepository
 
     public void AddUser(User user)
     {
-        if (!Users.ContainsKey(user.Username))
+        if (!Users.ContainsKey(user.UserName))
         {
-            Users[user.Username] = user;
+            Users[user.UserName] = user;
             SaveUsers();
         }
     }
 
     public void UpdateUser(User user)
     {
-        if (Users.ContainsKey(user.Username))
+        if (Users.ContainsKey(user.UserName))
         {
-            Users[user.Username] = user;
+            Users[user.UserName] = user;
             SaveUsers();
         }
     }
 
     public List<User> GetUsersByPrefix(string usernamePrefix)
     { 
-        return Users.Values.Where(u => u.Username.StartsWith(usernamePrefix)).ToList();
+        return Users.Values.Where(u => u.UserName.StartsWith(usernamePrefix)).ToList();
 
     }
 }

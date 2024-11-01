@@ -180,7 +180,7 @@ void SearchUsers(string[] command)
         var users = userService.SearchUsers(usernamePrefix);
         foreach (var user in users)
         {
-            Console.WriteLine($"{user.Username} | status: {(user.IsAvailable ? "available" : "not available")}");
+            Console.WriteLine($"{user.UserName} | status: {(user.IsAvailable ? "available" : "not available")}");
         }
     }
     else
